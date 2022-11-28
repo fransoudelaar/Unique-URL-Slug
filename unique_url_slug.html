@@ -202,6 +202,7 @@
           url: urlUnique,
           dataType: "text",
           success: function (data) {
+            console.log("data", data);
             data = JSON.parse(data);
             console.log("data", data);
             if (text == $("#unique").text()) {
