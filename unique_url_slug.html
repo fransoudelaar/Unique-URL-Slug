@@ -201,6 +201,16 @@
         $.ajax({
           url: urlUnique,
           dataType: "text",
+          error: function (data) {
+            $("#unique").css("color", "red");
+            $("#unique-status").addClass("item-status--failed");
+            $("#unique-status").html(
+              "Not unique - value is used in <strong>" +
+                name +
+                "</strong> item " +
+                autogenerate
+            );
+          },
           success: function (data) {
             console.log("data", data);
             // data = JSON.parse(data);
@@ -209,27 +219,26 @@
               $("#unique-status").removeClass("status-checking");
               $("#unique-status").removeClass("item-status--is-successful");
               $("#unique-status").removeClass("item-status--failed");
-              //   var name = otherThanCurrent(data.items, text);
-              //   console.log("name", name);
-              if (data.items.length > 0 && name) {
-                if (force_uniqueness == "true") {
-                  var uniqueValue = text + "-" + makeid(6);
-                  setValue(uniqueValue);
-                } else {
-                  $("#unique").css("color", "red");
-                  $("#unique-status").addClass("item-status--failed");
-                  $("#unique-status").html(
-                    "Not unique - value is used in <strong>" +
-                      name +
-                      "</strong> item " +
-                      autogenerate
-                  );
-                }
-              } else {
-                $("#unique").css("color", "green");
-                $("#unique-status").addClass("item-status--is-successful");
-                $("#unique-status").text("Unique value " + autogenerate);
-              }
+
+              //   if (data.items.length > 0 && name) {
+              //     if (force_uniqueness == "true") {
+              //       var uniqueValue = text + "-" + makeid(6);
+              //       setValue(uniqueValue);
+              //     } else {
+              //       $("#unique").css("color", "red");
+              //       $("#unique-status").addClass("item-status--failed");
+              //       $("#unique-status").html(
+              //         "Not unique - value is used in <strong>" +
+              //           name +
+              //           "</strong> item " +
+              //           autogenerate
+              //       );
+              //     }
+              //   } else {
+              $("#unique").css("color", "green");
+              $("#unique-status").addClass("item-status--is-successful");
+              $("#unique-status").text("Unique value " + autogenerate);
+              //   }
             }
             var value = [text, autogenerate];
             CustomElement.setValue(JSON.stringify(value));
