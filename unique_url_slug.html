@@ -203,11 +203,13 @@
           dataType: "text",
           success: function (data) {
             data = JSON.parse(data);
+            console.log("data", data);
             if (text == $("#unique").text()) {
               $("#unique-status").removeClass("status-checking");
               $("#unique-status").removeClass("item-status--is-successful");
               $("#unique-status").removeClass("item-status--failed");
               var name = otherThanCurrent(data.items, text);
+              console.log("name", name);
               if (data.items.length > 0 && name) {
                 if (force_uniqueness == "true") {
                   var uniqueValue = text + "-" + makeid(6);
