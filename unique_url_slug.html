@@ -183,7 +183,7 @@
 
       function setValue(value) {
         var re = new RegExp(restricted_chars, "g");
-        value.toLowerCase();
+        value = value.toLowerCase();
         value = value.replace(re, "-");
         $("#unique").text(value);
         isUnique(value);
