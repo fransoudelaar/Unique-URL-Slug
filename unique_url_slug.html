@@ -198,7 +198,7 @@
         var re = new RegExp(restricted_chars, "g");
         console.log("re", re);
         console.log("re.test(text)", re.test(text));
-        if (!re.test(text)) {
+        if (re.test(text)) {
           $("#unique").css("color", "red");
           $("#unique-status").addClass("item-status--failed");
           $("#unique-status").html("Not valid " + autogenerate);
