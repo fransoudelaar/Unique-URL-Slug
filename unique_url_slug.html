@@ -195,7 +195,7 @@
         $("#unique-status").addClass("status-checking");
         $("#unique-status").text("checking");
 
-        var re = new RegExp(restricted_chars, "g");
+        var re = new RegExp(restricted_chars);
         console.log("re", re);
         console.log("re.test(text)", re.test(text));
         if (re.test(text)) {
