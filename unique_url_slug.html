@@ -118,6 +118,7 @@
         try {
           CustomElement.init((element, _context) => {
             itemid = _context.item.id;
+            itemcodename = _context.item.codename;
             // Setup with initial value and disabled state
             if (element.config) {
               if (element.config.repeater) {
@@ -205,7 +206,14 @@
         }
 
         // HERE comes your own server proxy sevice that forwards JSON from Preview API based on "/items?elements.<codename>[contains]=<value>&depth=0" query
-        var urlUnique = repeater + "?code=" + codename + "&pageUrlSlug=" + text;
+        var urlUnique =
+          repeater +
+          "?code=" +
+          codename +
+          "&pageUrlSlug=" +
+          text +
+          "&pageCodename=" +
+          itemcodename;
         $.ajax({
           url: urlUnique,
           dataType: "text",
