@@ -36,7 +36,7 @@
       }
 
       .disabled_overlay {
-        position: fixed;
+        position: absolute;
         background-color: #777;
         z-index: 10;
         cursor: not-allowed;
@@ -72,6 +72,7 @@
           </div>
         </div>
       </div>
+      <div class="disabled_overlay"></div>
     </div>
     <div id="unique-status" class="status-checking item-status">checking</div>
     <script>
@@ -226,6 +227,7 @@
                 "</strong> item " +
                 autogenerate
             );
+            CustomElement.setValue(null);
           },
           success: function () {
             if (text == $("#unique").text()) {
