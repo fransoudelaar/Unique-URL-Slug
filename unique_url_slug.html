@@ -180,6 +180,8 @@
       function returnValue(codename) {
         CustomElement.getElementValue(codename, (value) => {
           setValue(value);
+          // Note: Not sure if we need to enable this
+          // isUnique(value);
         });
       }
 
@@ -188,7 +190,6 @@
         value = value.toLowerCase();
         value = value.replace(re, "-");
         $("#unique").text(value);
-        isUnique(value);
       }
 
       function isUnique(text) {
